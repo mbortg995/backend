@@ -37,7 +37,7 @@ app.get( '/events', (req, res) => {
 );
 
 app.post('/events', (req, res) => {
-  createEvent(req);
+  createEvent(req); // El request que recibo es un objeto REQUEST. Request.body es por donde tenemos que ir.
   res.send(events);
 }
 );
