@@ -2,6 +2,9 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
+import events from "./events.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -11,6 +14,11 @@ const app = express();
 app.use(express.json());
 
 const port = 3000;
+
+createEvent(json_request){
+
+}
+
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
@@ -24,27 +32,28 @@ app.get( '/', (req, res) => {
 );
 
 app.get( '/events', (req, res) => {
-  res.send("listado de eventos");
+  res.send(events);
 }
 );
 
-app.post("/events", (req, res) => {
-  res.send("crear un evento");
+app.post('/events', (req, res) => {
+  createEvent(req);
+  res.send(events);
 }
 );
 
-app.put("/events", (req, res) => {
+app.put('/events', (req, res) => {
   res.send("actualizar un evento");
 }
 );
 
-app.delete("/events", (req, res) => {
+app.delete('/events', (req, res) => {
   res.send("borrar un evento");
 }
 );
 
 
-app.post("/myName", (req, res) => {
+app.post('/myName', (req, res) => {
   res.send("My name is " + req.body.name);
 }
 );
