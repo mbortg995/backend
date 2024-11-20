@@ -11,13 +11,13 @@ const __dirname = dirname(__filename);
 
 
 const app = express();
-app.use(express.json());
+app.use(express.json()); // IMPPORTANTE. LE DECIMOS A EXPRESS DE MANERA EXPLICITA QUE PODEMOS RECIBIR JSONS.
 
 const port = 3000;
 
-createEvent(json_request){
-
-}
+// createEvent(json_request){
+// console.log("Prueba");
+// };
 
 
 app.listen(port, () => {
@@ -36,14 +36,37 @@ app.get( '/events', (req, res) => {
 }
 );
 
-app.post('/events', (req, res) => {
-  createEvent(req); // El request que recibo es un objeto REQUEST. Request.body es por donde tenemos que ir.
-  res.send(events);
+app.post('/events', async (req, res) => {
+  const newEvent = {
+    id:events.length+1,
+    name: req.body.name,
+    description: req.body.description,
+    start_at: req.body.start_at,
+    ends_at: req.body.ends_at,
+    address: req.body.address,
+    booking_open: req.body.true,
+    image: req.body.image,
+  };
+  events.push(newEvent);
+
+  res.json(newEvent);
 }
 );
 
-app.put('/events', (req, res) => {
-  res.send("actualizar un evento");
+app.put('/events/:id', (req, res) => {
+  const object_search = events.find(obj => obj.id === updateEvent.id);
+  const updateEvent = {
+    id:req.body.id,
+    name: req.body.name,
+    description: req.body.description,
+    start_at: req.body.start_at,
+    ends_at: req.body.ends_at,
+    address: req.body.address,
+    booking_open: req.body.true,
+    image: req.body.image,
+  }
+
+  res.json(updateEvent);
 }
 );
 
