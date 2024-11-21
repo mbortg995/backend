@@ -53,8 +53,8 @@ app.post('/events', async (req, res) => {
 }
 );
 
-app.put('/events/:id', (req, res) => {
-  const object_search = events.find(obj => obj.id === updateEvent.id);
+app.put('/events/', (req, res) => {
+
   const updateEvent = {
     id:req.body.id,
     name: req.body.name,
@@ -62,11 +62,27 @@ app.put('/events/:id', (req, res) => {
     start_at: req.body.start_at,
     ends_at: req.body.ends_at,
     address: req.body.address,
-    booking_open: req.body.true,
+    booking_open: req.body.booking_open,
     image: req.body.image,
+    company_id: req.body.company_id,
+    max_tickets_for_order: req.body.max_tickets_for_order,
+    products: req.body.products,
   }
+  const object_search = events.findIndex(obj => obj.id === updateEvent.id);
 
-  res.json(updateEvent);
+  events[object_search].id=updateEvent.id;
+  events[object_search].name=updateEvent.name;
+  events[object_search].description=updateEvent.description;
+  events[object_search].start_at=updateEvent.start_at;
+  events[object_search].ends_at=updateEvent.ends_at;
+  events[object_search].address=updateEvent.address;
+  events[object_search].booking_open=updateEvent.booking_open;
+  events[object_search].image=updateEvent.image;
+  events[object_search].company_id=updateEvent.company_id;
+  events[object_search].max_tickets_for_order=updateEvent.max_tickets_for_order;
+  events[object_search].products=updateEvent.products;
+
+  res.json(events[object_search]);
 }
 );
 
