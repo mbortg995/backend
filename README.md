@@ -18,22 +18,22 @@ publicación web.
 
 
 **Ejercicio 1**
-- Crear un archivo con el nombre main.js
-- Levantar un servidor utilizando Express, al levantar el servidor tiene que mostrar un mensaje que diga:
-  - `Servidor levantado en el puerto ${puerto}`.
+- ~Crear un archivo con el nombre main.js~
+- ~Levantar un servidor utilizando Express, al levantar el servidor tiene que mostrar un mensaje que diga:~
+  - ~`Servidor levantado en el puerto ${puerto}`.~
 
 **Ejercicio 2**
-- Levantar un servidor de Express
-- Manejar las siguientes rutas:
-  - Ruta: Raíz del sitio (‘/’) ,Metodo: get, Acción: Mostrar un mensaje de bienvenida
-  - Ruta: /events, Método: get, Acción: Mostrar un mensaje que diga: listado de eventos
-  - Ruta: /events, Método: post, Acción: Mostrar un mensaje que diga: crear un evento
-  - Ruta: /events, Método: put, Acción: Mostrar un mensaje que diga: actualizar un evento
-  - Ruta: /events, Método: delete, Acción: Mostrar un mensaje que diga: borrar un evento
-- Utilizar Postman para probar todas las llamadas
+- ~Levantar un servidor de Express~
+- ~Manejar las siguientes rutas:~
+  - ~Ruta: Raíz del sitio (‘/’) ,Metodo: get, Acción: Mostrar un mensaje de bienvenida~
+  - ~Ruta: /events, Método: get, Acción: Mostrar un mensaje que diga: listado de eventos~
+  - ~Ruta: /events, Método: post, Acción: Mostrar un mensaje que diga: crear un evento~
+  - ~Ruta: /events, Método: put, Acción: Mostrar un mensaje que diga: actualizar un evento~
+  - ~Ruta: /events, Método: delete, Acción: Mostrar un mensaje que diga: borrar un evento~
+- ~Utilizar Postman para probar todas las llamadas~
 
  **Ejercicio 3**
-- Al llamar a localhost:3000/events se debe mostrar el array con todos los eventos:
+- ~Al llamar a localhost:3000/events se debe mostrar el array con todos los eventos:~
  ````
 [{
 "id": 1,
@@ -50,8 +50,8 @@ at rerum. Quidem sunt autem nihil enim ut ut perferendis.",
 }]
  ````
 
-- El JSON debe estar como un fichero en nuestra aplicación
-  - Podemos crear un fichero events.js en el que devolvamos un array de eventos.
+- ~El JSON debe estar como un fichero en nuestra aplicación~
+  - ~Podemos crear un fichero events.js en el que devolvamos un array de eventos.~
  ````
 export default [
 {
@@ -61,9 +61,9 @@ name: “Mi primer evento”,
 }
 ]
 ````
-- Implementar funcionalidad para poder crear un evento
-- Implementar funcionalidad para poder actualizar un evento
-  - Nota: Habrá que pasarle un parámetro para saber que evento queremos actualizar.
+- ~Implementar funcionalidad para poder crear un evento~
+- ~Implementar funcionalidad para poder actualizar un evento~
+  - Nota: Habrá que pasarle un parámetro para saber que evento queremos actualizar. WIP.
 - Implementar funcionalidad para poder eliminar un evento
   - Nota: Habrá que pasarle un parámetro para saber que evento queremos eliminar.
 - Crear filtro por que tenga la venta de entradas abierta
