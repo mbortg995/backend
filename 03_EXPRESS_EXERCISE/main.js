@@ -33,6 +33,7 @@ app.get( '/events', (req, res) => {
   res.send(events);
 });
 
+// Implementar funcionalidad para poder crear un evento
 app.post('/events', async (req, res) => {
   const newEvent = {
     id:events.length+1,
@@ -49,6 +50,8 @@ app.post('/events', async (req, res) => {
   res.json(newEvent);
 });
 
+
+// Implementar funcionalidad para poder actualizar un evento
 app.put('/events/:id', (req, res) => {
 
   const param_id = parseInt(req.params.id); // Tengo que parsear el parametro ID pues me viene en string y lo quiero en int.
@@ -83,6 +86,8 @@ app.put('/events/:id', (req, res) => {
   res.json(events[object_search]);
 });
 
+
+// Implementar funcionalidad para poder eliminar un evento
 app.delete('/events/:id', (req, res) => {
   const param_id = parseInt(req.params.id);
   const object_search = events.findIndex(obj => obj.id === param_id);
@@ -94,10 +99,18 @@ app.delete('/events/:id', (req, res) => {
   res.send(object_response);
 });
 
+
+// Crear filtro por que tenga la venta de entradas abierta
 app.get( '/events/open', (req, res) => {
   const filtered_array = events.filter(obj => obj.booking_open === true);
   res.send(filtered_array);
 });
+
+// Crear filtro que muestre los eventos que empiecen después de una fecha específica
+// Expected input:
+// {
+//   "start_at": "2025-06-21T00:00:00.000000Z"
+// }
 
 app.get( '/events/date_greater_than/', (req, res) => {
   const filter_date = req.body.start_at;
@@ -105,6 +118,7 @@ app.get( '/events/date_greater_than/', (req, res) => {
   res.send(filtered_array);
 });
 
+// Crear una ruta (endpoint) que tenga un parámetro con el id del evento y me devuelve solo el evento que se ha consultado
 app.get( '/events/:id', (req, res) => {
   const param_id = parseInt(req.params.id);
   const object_search = events.findIndex(obj => obj.id === param_id);
