@@ -16,14 +16,13 @@ publicación web.
 
 ## 1.1.Ejercicios
 
-```
+
 **Ejercicio 1**
 - Crear un archivo con el nombre main.js
 - Levantar un servidor utilizando Express, al levantar el servidor
 tiene que mostrar un mensaje que diga:
 ○ `Servidor levantado en el puerto ${puerto}`.
-```
-```
+
 **Ejercicio 2**
 - Levantar un servidor de Express
 - Manejar las siguientes rutas:
@@ -38,8 +37,7 @@ que diga: actualizar un evento
 ○ Ruta: /events, Método: delete, Acción: Mostrar un mensaje
 que diga: borrar un evento
 - Utilizar Postman para probar todas las llamadas
-```
-```
+
  **Ejercicio 3**
 - Al llamar a localhost:3000/events se debe mostrar el array con
 todos los eventos:
@@ -78,15 +76,15 @@ evento queremos eliminar.
 una fecha específica
 - Crear una ruta (endpoint) que tenga un parámetro con el id del
 evento y me devuelve solo el evento que se ha consultado
-```
+
 **Investigar error CORS api**
 
 ## 1.2. Github
 
-```
-● Subir el proyecto a un repositorio en github
-● Hacer commits con frecuencia
-● Hacer un pequeño readme
-```
+
+- Subir el proyecto a un repositorio en github
+- Hacer commits con frecuencia
+- - Hacer un pequeño readme
+
 
 
