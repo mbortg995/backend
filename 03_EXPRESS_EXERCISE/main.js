@@ -22,19 +22,16 @@ const port = 3000;
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
-}
-);
+});
 
 app.get( '/', (req, res) => {
   console.log('Esto es un get');
   res.send("Bienvenido a mi API");
-}
-);
+});
 
 app.get( '/events', (req, res) => {
   res.send(events);
-}
-);
+});
 
 app.post('/events', async (req, res) => {
   const newEvent = {
@@ -50,10 +47,11 @@ app.post('/events', async (req, res) => {
   events.push(newEvent);
 
   res.json(newEvent);
-}
-);
+});
 
-app.put('/events/', (req, res) => {
+app.put('/events/:id', (req, res) => {
+
+  const param_id = parseInt(req.params.id); // Tengo que parsear el parametro ID pues me viene en string y lo quiero en int.
 
   const updateEvent = {
     id:req.body.id,
@@ -68,9 +66,9 @@ app.put('/events/', (req, res) => {
     max_tickets_for_order: req.body.max_tickets_for_order,
     products: req.body.products,
   }
-  const object_search = events.findIndex(obj => obj.id === updateEvent.id);
+  const object_search = events.findIndex(obj => obj.id === param_id);
 
-  events[object_search].id=updateEvent.id;
+  events[object_search].id=param_id;
   events[object_search].name=updateEvent.name;
   events[object_search].description=updateEvent.description;
   events[object_search].start_at=updateEvent.start_at;
@@ -83,21 +81,37 @@ app.put('/events/', (req, res) => {
   events[object_search].products=updateEvent.products;
 
   res.json(events[object_search]);
-}
-);
+});
 
-app.delete('/events', (req, res) => {
-  res.send("borrar un evento");
-}
-);
+app.delete('/events/:id', (req, res) => {
+  const param_id = parseInt(req.params.id);
+  const object_search = events.findIndex(obj => obj.id === param_id);
 
+  const object_response = events[object_search];
 
-app.post('/myName', (req, res) => {
-  res.send("My name is " + req.body.name);
-}
-);
+  events.splice(object_search, 1);
+
+  res.send(object_response);
+});
+
+app.get( '/events/open', (req, res) => {
+  const filtered_array = events.filter(obj => obj.booking_open === true);
+  res.send(filtered_array);
+});
+
+app.get( '/events/date_greater_than/', (req, res) => {
+  const filter_date = req.body.start_at;
+  const filtered_array = events.filter(obj => obj.start_at >= filter_date);
+  res.send(filtered_array);
+});
+
+app.get( '/events/:id', (req, res) => {
+  const param_id = parseInt(req.params.id);
+  const object_search = events.findIndex(obj => obj.id === param_id);
+  const object_response = events[object_search];
+  res.send(object_response);
+});
 
 app.get( '/', (req, res) => {
   res.sendFile(path.join(__dirname,'public','index.html'))
-}
-);
+});

@@ -63,12 +63,12 @@ name: “Mi primer evento”,
 ````
 - ~Implementar funcionalidad para poder crear un evento~
 - ~Implementar funcionalidad para poder actualizar un evento~
-  - Nota: Habrá que pasarle un parámetro para saber que evento queremos actualizar. WIP.
-- Implementar funcionalidad para poder eliminar un evento
-  - Nota: Habrá que pasarle un parámetro para saber que evento queremos eliminar.
-- Crear filtro por que tenga la venta de entradas abierta
-- Crear filtro que muestre los eventos que empiecen después de una fecha específica
-- Crear una ruta (endpoint) que tenga un parámetro con el id del evento y me devuelve solo el evento que se ha consultado
+  - ~Nota: Habrá que pasarle un parámetro para saber que evento queremos actualizar.~ 20/Nov/2024
+- ~Implementar funcionalidad para poder eliminar un evento~
+  - ~Nota: Habrá que pasarle un parámetro para saber que evento queremos eliminar.~ 21/Nov/2024
+- ~Crear filtro por que tenga la venta de entradas abierta~ 21/Nov/2024
+- ~Crear filtro que muestre los eventos que empiecen después de una fecha específica~ 21/Nov/2024
+- ~Crear una ruta (endpoint) que tenga un parámetro con el id del evento y me devuelve solo el evento que se ha consultado~ 21/Nov/2024
 
 **Investigar error CORS api**
 
