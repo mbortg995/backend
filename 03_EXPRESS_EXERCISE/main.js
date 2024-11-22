@@ -112,6 +112,7 @@ app.get( '/events/open', (req, res) => {
 //   "start_at": "2025-06-21T00:00:00.000000Z"
 // }
 
+// No gastar otro endpoint. Gastar query param desde /events.
 app.get( '/events/date_greater_than/', (req, res) => {
   const filter_date = req.body.start_at;
   const filtered_array = events.filter(obj => obj.start_at >= filter_date);
