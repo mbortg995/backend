@@ -1,4 +1,4 @@
-import events from '../events.js';
+import events from './events.database.js';
 import EventsService from './events.service.js';
 
 export const EventsController = {

@@ -1,48 +1,29 @@
-import events from '../events.js';
+import eventsRepository from "./events.repository.js";
 
 const EventsService = {
   getAll: () => {
+    const events = eventsRepository.findAll();
     return events;
   },
 
   getById: (id) => {
     const paramId = parseInt(id);
-    const event = events.find(obj => obj.id === paramId);
+    const event = eventsRepository.find(paramId);
     return event;
   },
   create: (eventData) => {
-    const newEvent = {
-      id: events.length + 1,
-      name: eventData.name,
-      description: eventData.description,
-      start_at: eventData.start_at,
-      ends_at: eventData.ends_at,
-      address: eventData.address,
-      booking_open: eventData.true,
-      image: eventData.image,
-    };
-    events.push(newEvent);
-    return newEvent;
+    const createdEvent = eventsRepository.create(eventData);
+    return createdEvent;
   },
   update: (id, eventData) => {
     const paramId = parseInt(id);
-    const eventIndex = events.findIndex(obj => obj.id === paramId);
-
-    events[eventIndex] = {
-      ...events[eventIndex],
-      ...eventData
-    }
-    return events[eventIndex];
+    const updatedEvent = eventsRepository.update(paramId, eventData);
+    return updatedEvent;
   },
   delete: (id) => {
-
     const paramId = parseInt(id);
-    const eventIndex = events.findIndex(obj => obj.id === paramId);
-    if (eventIndex === -1) {
-      return false;
-    }
-    events.splice(eventIndex, 1);
-    return true;
+    const deletedEvent = eventsRepository.delete(paramId);
+    return deletedEvent;
   }
 }
 
