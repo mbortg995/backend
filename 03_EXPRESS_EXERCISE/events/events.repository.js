@@ -1,4 +1,6 @@
 import events from './events.database.js';
+import eventModel from './events.model.js';
+
 
 const eventsRepository = {
   findAll: () => {
@@ -8,12 +10,8 @@ const eventsRepository = {
     const event = events.find(obj => obj.id === id);
     return event;
   },
-  create: (eventData) => {
-    const newEvent = {
-      ...eventData,
-      id: events.length + 1,
-    };
-    events.push(newEvent);
+  create: async (eventData) => {
+    const newEvent = await eventModel.create(eventData);
     return newEvent;
   },
 
