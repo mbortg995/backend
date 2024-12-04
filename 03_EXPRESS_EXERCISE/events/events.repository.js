@@ -3,12 +3,13 @@ import eventModel from './events.model.js';
 
 
 const eventsRepository = {
-  findAll: () => {
-    return events;
+  findAll:  () => {
+    const eventsList =  eventModel.find().lean();
+    return eventsList;
   },
   find: (id) => {
-    const event = events.find(obj => obj.id === id);
-    return event;
+    const eventFind = eventModel.findById(id).lean();
+    return eventFind;
   },
   create: async (eventData) => {
     const newEvent = await eventModel.create(eventData);
@@ -16,22 +17,27 @@ const eventsRepository = {
   },
 
   update: (id, eventData) => {
-    const eventIndex = events.findIndex(obj => obj.id === id);
+    const filter = {_id: id};
 
-    events[eventIndex] = {
-      ...events[eventIndex],
-      ...eventData
-    }
-    return events[eventIndex];
+    const updatedEvent = eventModel.findOneAndUpdate(filter, eventData, {new: true}).lean();
+
+    return updatedEvent;
   },
 
   delete: (id) => {
-    const eventIndex = events.findIndex(obj => obj.id === id);
-    if (eventIndex === -1) {
-      return false;
-    }
-    events.splice(eventIndex, 1);
-    return true;
+    const filter = {_id: id};
+
+    const deletedEvent = eventModel.findOneAndDelete(filter);
+    console.log(deletedEvent);
+
+    return deletedEvent !== null;
+
+  //   const eventIndex = events.findIndex(obj => obj.id === id);
+  //   if (eventIndex === -1) {
+  //     return false;
+  //   }
+  //   events.splice(eventIndex, 1);
+  //   return true;
   }
 }
 

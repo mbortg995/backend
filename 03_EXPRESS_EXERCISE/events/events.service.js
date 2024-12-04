@@ -1,14 +1,13 @@
 import eventsRepository from "./events.repository.js";
 
 const EventsService = {
-  getAll: () => {
-    const events = eventsRepository.findAll();
+  getAll:   () => {
+    const events =   eventsRepository.findAll();
     return events;
   },
 
   getById: (id) => {
-    const paramId = parseInt(id);
-    const event = eventsRepository.find(paramId);
+    const event = eventsRepository.find(id);
     return event;
   },
   create: (eventData) => {
@@ -16,13 +15,11 @@ const EventsService = {
     return createdEvent;
   },
   update: (id, eventData) => {
-    const paramId = parseInt(id);
-    const updatedEvent = eventsRepository.update(paramId, eventData);
+    const updatedEvent = eventsRepository.update(id, eventData);
     return updatedEvent;
   },
   delete: (id) => {
-    const paramId = parseInt(id);
-    const deletedEvent = eventsRepository.delete(paramId);
+    const deletedEvent = eventsRepository.delete(id);
     return deletedEvent;
   }
 }
