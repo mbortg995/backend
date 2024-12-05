@@ -1,4 +1,3 @@
-import events from './events.database.js';
 import eventModel from './events.model.js';
 
 
@@ -18,9 +17,7 @@ const eventsRepository = {
 
   update: (id, eventData) => {
     const filter = {_id: id};
-
     const updatedEvent = eventModel.findOneAndUpdate(filter, eventData, {new: true}).lean();
-
     return updatedEvent;
   },
 
@@ -31,13 +28,6 @@ const eventsRepository = {
     console.log(deletedEvent);
 
     return deletedEvent !== null;
-
-  //   const eventIndex = events.findIndex(obj => obj.id === id);
-  //   if (eventIndex === -1) {
-  //     return false;
-  //   }
-  //   events.splice(eventIndex, 1);
-  //   return true;
   }
 }
 
